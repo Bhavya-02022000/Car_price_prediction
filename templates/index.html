@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Prediction</title>
+</head>
+
+<body>
+
+    <div>
+        <form action="{{ url_for('predict')}}" method="post">
+            <div class="container">
+                <div class="heading">
+                    <h2>Car Price Prediction</h2>
+                </div>
+                <section class="img-content">
+                    <div class="img">
+                        <img src="{{url_for('static',filename = 'car-image1.jpg')}}" >
+                    </div>
+                </section>
+                <section class="content">
+                    <div class="result">{{ prediction_text }}</div>
+                    <table>
+                        <tr>
+                            <div class="align-data">
+                                <td>Year </td>
+                                <td><input class="inputfield" name="Year" type="number " placeholder="2015"></td>
+                            </div>
+                        </tr>
+                        <tr>
+                            <div class="align-data">
+                                <td>What is the Showroom Price?(In lakhs) </td>
+                                <td><input class="inputfield" name="Present_Price" required="required" placeholder="5.5"></td>
+                            </div>
+                        </tr>
+                        <tr>
+                            <div class="align-data">
+                                <td>How Many Kilometers Drived? </td>
+                                <td><input class="inputfield" name="Kms_Driven" required="required" placeholder="24000"></td>
+                            </div>
+                        </tr>
+                        <tr>
+                            <div class="align-data">
+                                <td>How much owners previously had the car(0 or 1 or 3) ? </td>
+                                <td><input class="inputfield" name="Owner" required="required" placeholder="1"></td>
+                            </div>
+                        </tr>
+                        <tr>
+                            <div class="align-data">
+                                <td>What Is the Fuel type? </td>
+                                <td><select name="Fuel_Type_Petrol" class="inputfield" required="required">
+                                    <option value="Petrol">Petrol</option>
+                                    <option value="Diesel">Diesel</option>
+                                    <option value="Diesel">CNG</option>
+                                </select></td>
+                            </div>
+                        </tr>
+                        <tr>
+                            <div class="align-data">
+                                <td>Are you A Dealer or Individual </td>
+                                <td><select name="Seller_Type_Individual" class="inputfield" required="required">
+                                    <option value="Dealer">Dealer</option>
+                                    <option value="Individual">Individual</option>
+                                </select></td>
+                            </div>
+                        </tr>
+                        <tr>
+                            <div class="align-data">
+                                <td>Transmission type </td>
+                                <td><select name="Transmission_Mannual" class="inputfield" required="required">
+                                    <option value="Mannual">Manual Car</option>
+                                    <option value="Automatic">Automatic Car</option>
+                                </select></td>
+                            </div>
+                        </tr>
+                        <br>
+                        <tr>
+                            <td></td>
+                            <br><td><button id="sub" class="submit-btn" type="submit ">Calculate the Selling Price</button>
+                            <br></td>
+                        </tr>
+                    </table>
+                </section>
+            </div>
+        </form>
+    </div>
+
+
+    <style>
+        img{
+            position: absolute;
+        }
+        table{
+            position: relative;
+            margin-left: 400px;
+        }
+        td{
+            font-weight: bold;
+            font-size: 16px;
+        }
+        .heading{
+            text-align: center;
+        }
+        .inputfield{
+            border-radius: 14px;
+            margin: 15px;
+            height: 25px;
+            font-size: 20px;
+            background-color: transparent;
+        }
+        ::placeholder{
+            color: lightgray;
+            padding-left: 10px;
+            font-size: 16px;
+        }
+        .submit-btn{
+            cursor: pointer;
+            flex: 0 0 100%;
+            max-width: 100%;
+            text-align: right;
+            padding: 0 15px;
+            height: 40px;
+            color: black;
+            background-color: lightgray;
+            border-radius: 20px;
+        }
+        .result{
+            text-align: center;
+            font-size: 30px;
+            color: red;
+        }
+    </style>
+
+</body>
+
+</html>
